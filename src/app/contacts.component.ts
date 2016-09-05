@@ -12,7 +12,7 @@ import { ContactsService } from './services/contacts.service';
 })
 export class ContactsAppComponent implements OnInit {
 
-  contacts: Contact[];
+  contacts: Array<Contact>;
 
   constructor(private contactsService: ContactsService) {}
 
