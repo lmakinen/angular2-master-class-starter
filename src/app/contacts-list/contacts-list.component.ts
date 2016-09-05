@@ -5,8 +5,7 @@ import { ContactsService } from '../services/contacts.service';
 @Component({
   selector: 'trm-contacts-list',
   templateUrl: 'contacts-list.component.html',
-  styleUrls: ['contacts-list.component.css'],
-  providers: [ContactsService]
+  styleUrls: ['contacts-list.component.css']
 })
 export class ContactsListComponent implements OnInit {
 

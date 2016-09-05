@@ -5,7 +5,7 @@ import { ContactsHeaderComponent } from './contacts-header';
   selector: 'trm-contacts-app',
   templateUrl: 'contacts.component.html',
   styleUrls: ['contacts.component.css'],
-  directives: [ContactsHeaderComponent],
+  directives: [ContactsHeaderComponent]
 })
 
 export class ContactsAppComponent {
