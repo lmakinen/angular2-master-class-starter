@@ -7,6 +7,7 @@ import { ContactsHeaderComponent } from './contacts-header';
   styleUrls: ['contacts.component.css'],
   directives: [ContactsHeaderComponent],
 })
+
 export class ContactsAppComponent {
 
 }
