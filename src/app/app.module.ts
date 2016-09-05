@@ -3,13 +3,19 @@ import { NgModule } from '@angular/core';
 import { ContactsAppComponent } from './contacts.component';
 import { ContactsHeaderComponent } from './contacts-header';
 import { ContactsService } from './services/contacts.service';
+import { ContactsListComponent } from './contacts-list/contacts-list.component';
+import { RouterModule } from '@angular/router';
+import { ContactsAppRoutes } from './app.routes';
 
 @NgModule({
   declarations: [
     ContactsAppComponent, 
-    ContactsHeaderComponent
+    ContactsHeaderComponent, ContactsListComponent
   ],
-  imports: [BrowserModule],
+  imports: [
+    BrowserModule, 
+    RouterModule.forRoot(ContactsAppRoutes)
+  ],
   providers: [
     ContactsService
   ],
