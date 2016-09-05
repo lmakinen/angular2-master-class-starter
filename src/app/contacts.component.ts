@@ -1,15 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ContactsHeaderComponent } from './contacts-header';
-import { Contact } from './models/contact'
-import { CONTACT_DATA } from './data/contact-data';
+import { Contact } from './models/contact';
+import { ContactsService } from './services/contacts.service';
 
 @Component({
   selector: 'trm-contacts-app',
   templateUrl: 'contacts.component.html',
   styleUrls: ['contacts.component.css'],
-  directives: [ContactsHeaderComponent]
+  directives: [ContactsHeaderComponent],
+  providers: [ContactsService]
 })
-export class ContactsAppComponent {
+export class ContactsAppComponent implements OnInit {
 
-  contacts: Contact[] = CONTACT_DATA;
+  contacts: Contact[];
+
+  constructor(private contactsService: ContactsService) {}
+
+  ngOnInit() {
+    this.contacts = this.contactsService.getContacts();
+  }
 }
