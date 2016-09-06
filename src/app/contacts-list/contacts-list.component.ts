@@ -16,21 +16,13 @@ export class ContactsListComponent implements OnInit {
   private terms$ = new Subject<string>();
 
   constructor(private contactsService: ContactsService) {
-   // this.contacts = contactsService.getContacts();
   }
 
   ngOnInit() {
-    this.contactsService.getContacts()
-      .subscribe(contacts => this.contacts = contacts);
-
-    this.terms$.debounceTime(400)
-               .distinctUntilChanged()
-               .subscribe(term => this.search(term));
-  }
-
-  search(term) {
-    this.contactsService.search(term)
-      .subscribe(contacts => this.contacts = contacts);
+    this.contacts = this.terms$.debounceTime(400)
+                               .distinctUntilChanged()
+                               .switchMap(term => this.contactsService.search(term))
+                               .merge(this.contactsService.getContacts())
   }
 
 }
