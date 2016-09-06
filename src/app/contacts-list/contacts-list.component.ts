@@ -30,7 +30,7 @@ export class ContactsListComponent implements OnInit {
                                         .merge(this.contactsService.getContacts());
 
     this.eventBusService.emit('appTitleChange', 'Contact list');
-    this.titleService.setTitle('Contacts, changes');
+    this.titleService.setTitle('Contacts');
 
   }
 }

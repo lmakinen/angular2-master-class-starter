@@ -23,12 +23,14 @@ export class ContactsDetailViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.contactsService.getContact(this.route.snapshot.params['id'])
-      .subscribe(contacts => { 
-        this.contact = contacts;
-        this.eventBusService.emit('appTitleChange', this.contact.name);
-        this.titleService.setTitle(this.contact.name);
+    this.route.params 
+      .subscribe(params => { 
+        this.contactsService.getContact(params['id']).subscribe(contact => { 
+          this.contact = contact;
+          this.eventBusService.emit('appTitleChange', this.contact.name);
+          this.titleService.setTitle(this.contact.name); 
         });
+      });
   }
 
   navigateToEditor(contact: Contact) {
