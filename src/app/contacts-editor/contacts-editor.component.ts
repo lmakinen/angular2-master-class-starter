@@ -13,13 +13,14 @@ import { EventBusService } from '../services/event-bus.service';
 })
 export class ContactsEditorComponent implements OnInit {
   contact: Contact = <Contact>{ address: {}};
+  warnOnClosing = true;
 
   constructor(
     private contactsService: ContactsService,
     private router: Router,
     private route: ActivatedRoute,
     private eventBusService: EventBusService,
-    private titleService: Title
+    private titleService: Title, 
     ) {}
 
   ngOnInit() {
@@ -40,6 +41,7 @@ export class ContactsEditorComponent implements OnInit {
   }
 
   save (contact: Contact) {
+    this.warnOnClosing = false; 
     this.contactsService.updateContact(this.contact)
       .subscribe(response => this.goToDetails(contact));
   }

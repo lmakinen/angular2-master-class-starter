@@ -44,7 +44,11 @@ import 'rxjs/add/operator/filter';
   providers: [
     ContactsService,
     EventBusService,
-    Title
+    Title,
+    {
+      provide: 'ConfirmNavigationGuard',
+      useValue: (component) => !component.warnOnClosing || window.confirm('Navigate away without saving?')
+    }
   ],
   bootstrap: [ContactsAppComponent]
 })
