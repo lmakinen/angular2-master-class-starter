@@ -8,6 +8,8 @@ export class ContactsService {
 
   private API_ENDPOINT = 'http://localhost:4201/api';
 
+  title: string;
+
   constructor(private http: Http) {
 
   }

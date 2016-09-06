@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 
 import { Contact } from '../models/contact';
 import { ContactsService } from '../services/contacts.service';
+import { EventBusService } from '../services/event-bus.service';
 
 @Component({
   selector: 'trm-contacts-editor',
@@ -15,12 +17,18 @@ export class ContactsEditorComponent implements OnInit {
   constructor(
     private contactsService: ContactsService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private eventBusService: EventBusService,
+    private titleService: Title
     ) {}
 
   ngOnInit() {
     this.contactsService.getContact(this.route.snapshot.params['id'])
-      .subscribe(contacts => this.contact = contacts);
+      .subscribe(contacts => { 
+        this.contact = contacts;
+        this.eventBusService.emit('appTitleChange', 'Edit: ' + this.contact.name);
+        this.titleService.setTitle('Edit: ' + this.contact.name); 
+        });
   }
 
   private goToDetails (contact: Contact) {
