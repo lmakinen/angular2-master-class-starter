@@ -15,6 +15,8 @@ import { ContactsService } from './services/contacts.service';
 import { ContactsAppRoutes } from './app.routes';
 
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
 
 @NgModule({
   declarations: [
